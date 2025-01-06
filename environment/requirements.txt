@@ -1,0 +1,7 @@
+pandas
+openpyxl
+openai
+langchain
+langchain-community
+langchain-huggingface==0.1.2
+chromadb==0.6.1
