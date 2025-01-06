@@ -21,6 +21,8 @@ CHN_BASE_PROMPT = """你的职责是通过问题解决疗法，引导与一位�
 在识别照护者的需求和期望后，为他/她制定两个简明、可实现且个性化的目标，以直接满足并支持他/她表达的需求和期望。确保这些目标既现实又能激励和增强照护者的动力。
 在照护者选择一个目标后，与他/她讨论可以在接下来的几天内实施此目标的具体行为。"""
 
+CHN_STRUCTURED_ASSESSMENT = """
+"""
 
 ENG_CULTURAL_PROMPT = """Respond to the client with sensitivity to their Chinese cultural background. Incorporate culturally appropriate language, values, and communication styles in your responses to ensure they align with the client’s cultural context."""
 

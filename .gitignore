@@ -2,3 +2,5 @@ Example_inputs_data/Ricky_persona1_df.csv
 .env
 utils/__pycache__/constants.cpython-310.pyc
 utils/__pycache__/tools.cpython-310.pyc
+
+conversation_logs

@@ -6,8 +6,8 @@ from utils.tools import convert_csv_to_xlsx, traslate_to_chinese, traslate_to_en
 
 # Constants
 MODEL_NAME = "chinese prompt model"
-# SYSTEM_PROMPT = BASE_PROMPT + MI_EXAMPLES
-MODEL_SELECTED = "gpt-4o-mini"
+
+MODEL_SELECTED = "gpt-4o"
 TEMPERATURE_SELECTED = 0.5
 
 # Configurations
@@ -34,22 +34,22 @@ def chat_completions(chn_user_input, eng_user_input):
 
     try:
         # # english user input -> baseline response 
-        # assistant_reply_1 = generate_response(eng_user_input, system_prompt=ENG_BASE_PROMPT)
+        assistant_reply_1 = generate_response(eng_user_input, system_prompt=ENG_BASE_PROMPT)
         # print(f"NO Cultural Prompt Response:\n {assistant_reply_1}\n")
-        assistant_reply_1 = ""
+        # assistant_reply_1 = ""
 
         # # english user input -> response with cultural prompting
-        # assistant_reply_2 = generate_response(eng_user_input, system_prompt=ENG_CULTURAL_PROMPT + ENG_BASE_PROMPT)
+        assistant_reply_2 = generate_response(eng_user_input, system_prompt=ENG_CULTURAL_PROMPT + ENG_BASE_PROMPT)
         # print(f"WITH Cultural Prompt Response:\n {assistant_reply_2}\n")
-        assistant_reply_2 = ""
+        # assistant_reply_2 = ""
 
         # chinese user input -> baseline response 
         assistant_reply_3 = generate_response(chn_user_input, system_prompt=CHN_BASE_PROMPT)
-        print(f"NO Cultural Prompt Response:\n {assistant_reply_3}\n")
+        # print(f"NO Cultural Prompt Response:\n {assistant_reply_3}\n")
         
         # chinese user input -> response with cultural prompting
         assistant_reply_4 = generate_response(chn_user_input, system_prompt=CHN_CULTURAL_PROMPT + CHN_BASE_PROMPT)
-        print(f"WITH Cultural Prompt Response:\n {assistant_reply_4}\n")
+        # print(f"WITH Cultural Prompt Response:\n {assistant_reply_4}\n")
 
         log_conversation(log_filename, eng_user_input, chn_user_input, assistant_reply_1, assistant_reply_2, assistant_reply_3, assistant_reply_4)
 
@@ -65,8 +65,8 @@ if __name__ == "__main__":
     trial_id, log_filename = create_log_file()
     for i in range(len(df['Entry'])):
         chn_user_prompt = df['Entry'][i]
-        # eng_user_prompt = traslate_to_english(chn_user_prompt)
-        eng_user_prompt = ""
+        eng_user_prompt = traslate_to_english(chn_user_prompt)
+        # eng_user_prompt = ""
         chat_completions(chn_user_prompt, eng_user_prompt)
     
     csv_file_path = log_filename
