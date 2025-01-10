@@ -1,12 +1,11 @@
 import os
 import openai
 from utils.constants import ENG_BASE_PROMPT, CHN_BASE_PROMPT, MI_EXAMPLES, ENG_CULTURAL_PROMPT, CHN_CULTURAL_PROMPT
-from utils.tools import convert_csv_to_xlsx, traslate_to_chinese, traslate_to_english, create_log_file, log_conversation, import_data
+from utils.tools import convert_csv_to_xlsx, traslate_to_chinese, traslate_to_english, create_log_file, log_conversation, import_doc_data
 
 
 # Constants
 MODEL_NAME = "chinese prompt model"
-
 MODEL_SELECTED = "gpt-4o"
 TEMPERATURE_SELECTED = 0.5
 
@@ -61,8 +60,9 @@ def chat_completions(chn_user_input, eng_user_input):
 if __name__ == "__main__":
     # # Specify the file path
     input_data_file_path = "Example_inputs_data/Ricky_persona1_df.csv"
-    df = import_data(input_data_file_path)
-    trial_id, log_filename = create_log_file()
+    df = import_doc_data(input_data_file_path)
+    versions = ["EngInput", "EngResponse_No CulturalPrompt", "EngResponse_With CulturalPrompt", "ChnInput", "ChnResponse_No CulturalPrompt", "ChnResponse_With CulturalPrompt"]
+    trial_id, log_filename = create_log_file(versions)
     for i in range(len(df['Entry'])):
         chn_user_prompt = df['Entry'][i]
         eng_user_prompt = traslate_to_english(chn_user_prompt)
